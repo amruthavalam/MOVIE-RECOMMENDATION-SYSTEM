@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        label {
+            font-size: 18px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 10px;
+            width: 200px;
+        }
+        button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .results {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Movie Recommendation System 🎬</h1>
+
+    <form method="POST">
+        <label>Select Recommendation Type:</label>
+        <select name="rec_type" required>
+            <option value="content">Content-Based (Similar Movies)</option>
+            <option value="user">User-Based Collaborative Filtering</option>
+            <option value="item">Item-Based Collaborative Filtering</option>
+        </select>
+        <br>
+
+        <label>Enter Movie Name (if applicable):</label>
+        <input type="text" name="movie_name">
+        <br>
+
+        <label>Enter User ID (if applicable):</label>
+        <input type="number" name="user_id">
+        <br>
+
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+    <div class="results">
+        {% if recommendations %}
+            <h2>Recommended Movies:</h2>
+            <ul>
+                {% for movie in recommendations %}
+                    <li>{{ movie }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+</body>
+</html>
